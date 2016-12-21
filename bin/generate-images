@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+const _ = require("lodash");
+const ffs = require("final-fs");
+const argv = require("minimist")(process.argv.slice(2));
+const source = argv._[0];
+const prefix = argv.prefix || "";
+const images = ffs.readdirRecursiveSync(source, true, source).filter(file => file.endsWith(".jpg"));
+
+const result = `export class Images {
+${images.map(image => `    static readonly ${_.camelCase(image.substring(0, image.length - 4).substring(source.length))} = "${prefix}${image}";`).join("\n")}
+}`;
+
+console.log(result);

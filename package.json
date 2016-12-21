@@ -1,0 +1,26 @@
+{
+  "name": "react-native-static-images",
+  "version": "1.0.0",
+  "description": "Generate a file for static images for react native projects",
+  "bin": {
+    "generate-images": "./bin/generate-images"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wcandillon/react-native-static-images.git"
+  },
+  "author": "William Candillon",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/wcandillon/react-native-static-images/issues"
+  },
+  "homepage": "https://github.com/wcandillon/react-native-static-images#readme",
+  "dependencies": {
+    "final-fs": "^1.6.1",
+    "lodash": "^4.17.2",
+    "minimist": "^1.2.0"
+  }
+}
