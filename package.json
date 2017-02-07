@@ -1,6 +1,6 @@
 {
   "name": "react-native-static-images",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate a file for static images for react native projects",
   "bin": {
     "generate-images": "./bin/generate-images"
