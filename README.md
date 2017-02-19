@@ -1,4 +1,6 @@
 # react-native-static-images
+[![npm version](https://badge.fury.io/js/react-native-static-images.svg)](https://badge.fury.io/js/react-native-static-images)
+
 Generate a file for using static images in react native.
 
 ## Install
