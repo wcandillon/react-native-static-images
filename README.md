@@ -9,16 +9,18 @@ Generate a file for using static images in react native.
 npm install react-native-static-images --save-dev
 ```
 
-## Usage 
+## Usage
 
 ```
 $(npm bin)/generate-images path/to/images --prefix ../ > src/Images.ts
 ```
 Additional keys:
+
 | Key | Description | Default |
 | --- | --- | --- |
 | --js | generate JavaScript code | TypeScript |
 | --indent (count) | number of spaces to use for indentation | 4 |
+
 Full example:
 ```
 $(npm bin)/generate-images path/to/images --prefix ../ --js --indent 2 > src/Images.js
@@ -30,7 +32,7 @@ $(npm bin)/generate-images path/to/images --prefix ../ --js --indent 2 > src/Ima
 $ ls public/images/
 ResetPassword.jpg	SignIn.jpg		SignUp.jpg		challenges		movements		no-profile-pic.jpg	selfie.jpg
 $ $(npm bin)/generate-images public/images --prefix ../ > src/Images.ts
-$ cat src/Images.ts 
+$ cat src/Images.ts
 export default class Images {
     static readonly resetPassword = require("../public/images/ResetPassword.jpg");
     static readonly signIn = require("../public/images/SignIn.jpg");
