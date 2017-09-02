@@ -9,7 +9,10 @@ const images = ffs
   .filter(file => file.endsWith(".jpg") || file.endsWith(".png"))
   .map(file => file.replace(/(@2x\.|@3x\.)/g, "."));
 
-const result = `export default class Images {
+const result = `/**
+ * WARNING: this file is generated. Don't change it manually.
+ */
+export default class Images {
 ${images
   .map(
     image =>
