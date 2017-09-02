@@ -20,6 +20,7 @@ Additional keys:
 | --- | --- | --- |
 | --js | generate JavaScript code | TypeScript |
 | --indent (count) | number of spaces to use for indentation | 4 |
+| --singlequote | use single quotation marks | double quotation
 
 Full example:
 ```
