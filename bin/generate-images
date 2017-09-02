@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 const _ = require("lodash");
 const ffs = require("final-fs");
-const argv = require("minimist")(process.argv.slice(2));
+const argv = require("minimist")(process.argv.slice(2), { boolean: "js" });
 const source = argv._[0];
 const prefix = argv.prefix || "";
 const images = ffs
   .readdirRecursiveSync(source, true, source)
   .filter(file => file.endsWith(".jpg") || file.endsWith(".png"))
   .map(file => file.replace(/(@2x\.|@3x\.)/g, "."));
+
+const js = argv.js || false;
+const readonly = js ? "" : "readonly ";
 
 const result = `/**
  * WARNING: this file is generated. Don't change it manually.
@@ -16,7 +19,7 @@ export default class Images {
 ${images
   .map(
     image =>
-      `    static readonly ${_.camelCase(
+      `    static ${readonly}${_.camelCase(
         image.substring(0, image.length - 4).substring(source.length)
       )} = require("${prefix}${image}");`
   )
