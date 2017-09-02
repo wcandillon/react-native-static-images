@@ -14,6 +14,15 @@ npm install react-native-static-images --save-dev
 ```
 $(npm bin)/generate-images path/to/images --prefix ../ > src/Images.ts
 ```
+Additional keys:
+| Key | Description | Default |
+| --- | --- | --- |
+| --js | generate JavaScript code | TypeScript |
+| --indent (count) | number of spaces to use for indentation | 4 |
+Full example:
+```
+$(npm bin)/generate-images path/to/images --prefix ../ --js --indent 2 > src/Images.js
+```
 
 ## Example
 
