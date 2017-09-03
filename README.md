@@ -19,7 +19,9 @@ Additional keys:
 | Key | Description | Default |
 | --- | --- | --- |
 | --js | generate JavaScript code | TypeScript |
+| --flow | add @flow comment, (--js key is assumed implicitly) | TypeScript |
 | --indent (count) | number of spaces to use for indentation | 4 |
+| --singlequote | use single quotation marks | double quotation
 
 Full example:
 ```

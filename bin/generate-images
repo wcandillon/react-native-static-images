@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 const _ = require("lodash");
 const ffs = require("final-fs");
-const argv = require("minimist")(process.argv.slice(2), { boolean: "js" });
+const argv = require("minimist")(process.argv.slice(2), {
+  boolean: ["js", "singlequote", "flow"],
+});
 const source = argv._[0];
 const prefix = argv.prefix || "";
 const images = ffs
@@ -9,14 +11,20 @@ const images = ffs
   .filter(file => file.endsWith(".jpg") || file.endsWith(".png"))
   .map(file => file.replace(/(@2x\.|@3x\.)/g, "."));
 
-const js = argv.js || false;
+const flowNeeded = argv.flow || false;
+const flow = flowNeeded ? "\n * @flow" : "";
+
+const js = argv.js || flowNeeded;
 const readonly = js ? "" : "readonly ";
 
 const indentCount = parseInt(argv.indent, 10) || 4;
 const indent = " ".repeat(indentCount);
 
+const singleQuote = argv.singlequote || false;
+const quote = singleQuote ? "'" : '"';
+
 const result = `/**
- * WARNING: this file is generated. Don't change it manually.
+ * WARNING: this file is generated. Don't change it manually.${flow}
  */
 export default class Images {
 ${images
@@ -24,7 +32,7 @@ ${images
     image =>
       `${indent}static ${readonly}${_.camelCase(
         image.substring(0, image.length - 4).substring(source.length)
-      )} = require("${prefix}${image}");`
+      )} = require(${quote}${prefix}${image}${quote});`
   )
   .join("\n")}
 }`;
